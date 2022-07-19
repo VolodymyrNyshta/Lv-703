@@ -58,7 +58,7 @@ namespace Homework_8
                 }
 
             }
-            while (shapes.Count < 5);
+            while (shapes.Count < 10);
             foreach (Shape shape in shapes)
             {
                 shape.Print();
