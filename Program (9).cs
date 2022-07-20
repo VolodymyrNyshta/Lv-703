@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 namespace HW9_B
 {
     class Program
@@ -17,39 +18,32 @@ namespace HW9_B
                     strList.Add(sr.ReadLine());
                 }
             }
-
-            string strmax = null;
-            string strmin = null;
-            int min = strList[1].Trim().Length;
-            int max = strList[1].Trim().Length;
-
-            for (int i = 0; i < strList.Count; i++)
+            IEnumerable<string> sortedList = from s in strList
+                                         orderby s.Length
+                                         select s;
+            int i = 1;
+            foreach (string item in sortedList)
             {
-                    Console.WriteLine($"Row contain: {strList[i].Trim().Length} sumbols");
-                    if (strList[i].Trim().Length > max)
-                    {
-                        strmax = strList[i].Trim();
-                        max = strList[i].Trim().Length;
-                    }
-                    if (strList[i].Trim().Length < min)
-                    {
-                        strmin = strList[i].Trim();
-                        min = strList[i].Trim().Length;
-                    }
-                
+                Console.WriteLine($"Numbers char in {i} line is {item.Length}");
+                i++;
             }
+            IEnumerable<int> countSorted = from s in sortedList
+                                           let c = s.Count()
+                                           select c;
+
+            int max = countSorted.LastOrDefault();
+            int min = countSorted.FirstOrDefault();
+
             Console.WriteLine($"Longest line has {max} sumbols");
-            Console.WriteLine(strmax);
+            Console.WriteLine(sortedList.LastOrDefault().Trim());
             Console.WriteLine($"Shortest line has {min} sumbols");
-            Console.WriteLine(strmin);
+            Console.WriteLine(sortedList.FirstOrDefault().Trim());
             Console.WriteLine("Rows with \"Add\"");
             foreach (string item in strList)
             {
-                if(item.Contains("Add"))
+                if (item.Contains("Add"))
                     Console.WriteLine(item.Trim());
             }
-
-
         }
     }
 }
