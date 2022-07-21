@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Homework8
+namespace Homework9App1
 {
     abstract class Shape : IComparable<Shape>
     {
