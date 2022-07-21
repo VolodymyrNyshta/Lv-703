@@ -1,16 +1,24 @@
-namespace Vitaliy_S_HW_9
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HW8_Kovalenko
 {
-    abstract class Shape : IComparable<Shape>
+    internal abstract class Shape : IComparable<Shape>
     {
         private string name;
-        public string Name { get { return name; } set { name = value; } }
+        public string Name
+        {
+            get { return name; }
+        }
         public Shape(string name)
         {
             this.name = name;
         }
-        abstract public double Area();
-        abstract public double Perimetr();
-
+        public abstract double Area();
+        public abstract double Primeter();
         public int CompareTo(Shape? other)
         {
             if (this.Area() > other.Area())
@@ -24,5 +32,7 @@ namespace Vitaliy_S_HW_9
             else
                 return 0;
         }
+
     }
+
 }

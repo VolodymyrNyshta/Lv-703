@@ -1,0 +1,61 @@
+using System;
+
+namespace Task4
+{
+    class Program 
+    {
+        static void Main(string[] args)
+        {
+            Car myCar1 = new Car("965-A", "White", 5500);
+            Car[] myCars = new Car[3];
+            myCars[0] = myCar1;
+            
+            for (int i = 1; i < myCars.Length; i++)
+            {
+               myCars[i] = Car.Input();
+            }
+            Console.WriteLine(new string('*', 15));
+            Console.WriteLine("Cars with new price");
+            for (int i = 0; i < myCars.Length; i++)
+            {
+                myCars[i].ChangePrice(10);
+                myCars[i].Print();
+            }
+
+            Console.WriteLine(new string('*', 15));
+            Console.Write("Enter new color: ");
+            string color = Console.ReadLine();
+            
+            Console.WriteLine("Repaint cars");
+            Car.RePaint(myCars, color);
+            for (int i = 0; i < myCars.Length; i++)
+            {
+                myCars[i].Print();
+            }
+
+            for (int i = 0; i < myCars.Length; i++)
+            {
+                for (int j = i+1; j < myCars.Length; j++)
+                {
+                    if (myCars[i] == myCars[j])
+                    {
+                        Console.WriteLine($"{myCars[i]} == {myCars[j]}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Cars are not equals");
+                    }
+                }
+
+            }
+            for (int i = 0; i < myCars.Length; i++)
+            {
+                myCars[i].ToString();
+            }
+            
+
+
+
+        }
+    }
+}

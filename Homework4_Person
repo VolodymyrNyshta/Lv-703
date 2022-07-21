@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Homework4
+{
+    class Person
+    {
+        private string name;
+        private DateTime birthYear;
+        public string Name
+        { 
+            get { return name; }
+            set { name = value; }
+        }
+        public DateTime BirthDay
+        { get{ return birthYear; } }
+        public Person()
+        { }
+        public Person(string name, DateTime birthYear)
+        {
+            this.name = name;
+            this.birthYear = birthYear;
+        }
+        public int Age()
+        {
+            DateTime date = DateTime.Now;
+            return date.Year - birthYear.Year;
+        }
+        public static Person Input()
+        {
+            Console.Write("Enter person name: ");
+            string name = Console.ReadLine();
+            Console.Write("Enter person birthday: ");
+            DateTime birthYear = new DateTime();
+            try
+            {
+                birthYear = DateTime.Parse(Console.ReadLine());
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Correct format is: 2020,01,01");
+            }
+            return new Person(name, birthYear);
+        }
+        public string ChangeName(string newName)
+        {
+           return name = newName;
+        }
+        public override string ToString()
+        {
+            return string.Format($"Name is {name} - birthday is {birthYear}");
+        }
+        public static void Output(Person[] person)
+        {
+            for (int i = 0; i < person.Length; i++)
+            {
+                Console.WriteLine(person[i].ToString());
+            } 
+        }
+        public static bool operator ==(Person person1, Person person2)
+        {
+            return person1.name == person2.name;
+        }
+        public static bool operator !=(Person person1, Person person2)
+        {
+            return person1.name != person2.name;
+        }
+    }
+}

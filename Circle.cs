@@ -1,4 +1,4 @@
-﻿namespace Vitaliy_S_HW_9
+namespace Vitaliy_S_HW_9
 {
     class Circle : Shape
     {

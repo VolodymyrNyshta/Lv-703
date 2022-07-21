@@ -1,0 +1,92 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Task4
+{
+    class Car
+    {
+        private string name;
+        private string color;
+        private double price;
+        const string CompanyName = "ZAZ";
+
+        public Car() 
+        { }
+        public Car(string name, string color, double price)
+        {
+            this.name = name;
+            this.color = color;
+            this.price = price;
+        }
+        public string Color
+        {
+            get { return color;}
+            set { color = value; }
+        }
+        public static Car Input()
+        {
+            Console.WriteLine("Enter car info: ");
+            Console.Write("\nEnter car name: ");
+            string name = Console.ReadLine();
+            Console.Write("\nEnter car color: ");
+            string color = Console.ReadLine();
+            Console.Write("\nEnter car price: ");
+            double price = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+            Car car = new Car(name, color, price);
+            return car;
+        }
+        public void Print()
+        {
+            Console.WriteLine($"Name is {name}");
+            Console.WriteLine($"Color is {color}");
+            Console.WriteLine($"Price is {price}");
+            Console.WriteLine($"Company name is {CompanyName}");
+            Console.WriteLine();
+        }
+        public void ChangePrice(double x)
+        {
+            price -= price * x / 100;
+        }
+        public static void RePaint(Car[] cars, string color)
+        {
+            for (int i = 0; i < cars.Length; i++)
+            {
+                if (cars[i].color.ToLower() == "white")
+                {
+                    cars[i].color = color;
+                }
+            }
+        }
+        public static bool operator ==(Car car1, Car car2)
+        {
+            if (car1.name == car2.name && car1.price == car2.price)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+        public static bool operator !=(Car car1, Car car2)
+        {
+            if (car1.name != car2.name && car1.price != car2.price)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public override string ToString()
+        {
+            return string.Format($"Name is {name}, Color is {color}, Price is {price}");
+        }
+    }
+}

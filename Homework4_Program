@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Homework4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Person[] persons = new Person[2];
+            for (int i = 0; i < persons.Length; i++)
+            {
+                persons[i] = Person.Input();
+            }
+           
+            for (int i = 0; i < persons.Length; i++)
+            {
+                Console.WriteLine($"{persons[i].Name} is {persons[i].Age()} yeard old");
+                if (persons[i].Age() < 16)
+                {
+                    persons[i].Name = persons[i].ChangeName("Very young");
+                }
+            }
+            
+            Person.Output(persons);
+            Console.WriteLine(new string('*',15));
+
+            for (int i = 0; i < persons.Length; i++)
+            {
+                for (int j = i+1; j < persons.Length; j++)
+                {
+                    if (persons[i].Name == persons[j].Name)
+                    {
+                        Console.WriteLine($"Person {persons[i].ToString()}");
+                        Console.WriteLine("Has some name with:");
+                        Console.WriteLine($"Person {persons[j].ToString()}");
+                    }
+                }
+            }
+
+
+
+            Console.ReadKey();
+        }
+    }
+}
