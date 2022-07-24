@@ -38,5 +38,32 @@ namespace TestTriangle
             double actual = name.Square();
             Assert.AreEqual(expected, actual);
         }
+         [TestMethod]
+        public void Distances_X4y5_X1y1_X2y2()
+        {
+            Point A = new Point(1, 1);
+            Point B = new Point(0, 3);
+            Point C = new Point(2, 4);
+            List<double> expected = new List<double> { 1.41, 3, 4.47 };
+            Triangle triangle = new Triangle(A, B, C);
+            List<double> actual = triangle.DistancesToOrigin();
+            Assert.AreEqual(expected[0], actual[0]);
+            Assert.AreEqual(expected[1], actual[1]);
+            Assert.AreEqual(expected[2], actual[2]);
+        }  
+    }
+    [TestClass]
+    public class PointTest
+    {
+        [TestMethod]
+        public void Point_ToString_x6y7_bkt6c_7bkt()
+        {
+            int x = 1;
+            int y = 2;
+            string expected = "(1, 2)";
+            Point testPoint = new Point(x, y);
+            string actual = testPoint.ToString();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
