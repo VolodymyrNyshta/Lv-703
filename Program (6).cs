@@ -5,6 +5,7 @@ using System.IO;
 
 namespace Homework7
 {
+
     class Program
     {
         static void Main(string[] args)

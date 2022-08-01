@@ -1,46 +1,61 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using TriangleSpace;
-
-
-namespace TriangleTest
+namespace HW10_Test_Triangle
 {
-    [TestClass]
-    public class TriangleTestClass
+    public class Tests
     {
-        [TestMethod]
-        public void Distance_readPoint1andPoint2_returnDistance()
+        [SetUp]
+        public void Setup()
         {
-            Point a = new Point(0, 0);
-            Point b = new Point(1,0);
-            double expected = 1;
-            double actual = Math.Sqrt(Math.Pow((a.X - b.X), 2) + Math.Pow((a.Y - b.Y), 2));
-            Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void PerimetrTriangle_readTriangle_returnPerimetr()
+        [Test]
+        public void Test1()
         {
-            Point a = new Point(0, 0);
-            Point b = new Point(10, 0);
-            Point c = new Point(0, 10);
-            Triangle triangle = new Triangle(a,b,c);
-            double expected = 34;
-            double actual =Math.Round(triangle.Dictance(triangle.vertex1, triangle.vertex2) + triangle.Dictance(triangle.vertex2, triangle.vertex3) + triangle.Dictance(triangle.vertex1, triangle.vertex3)); 
-            Assert.AreEqual(expected, actual);
+            //Arrange
+            Point p1, p2, p3;
+            p1 = new Point(1, 1);
+            p2 = new Point(2, 7);
+            p3 = new Point(7, 3);
+            Triangle tr1 = new Triangle(p1, p2, p3);
+
+            //Act
+            double p = Convert.ToInt32(tr1.Perimetr());
+
+            //Assert
+            Assert.AreEqual(18, p);
         }
 
-        [TestMethod]
-        public void SquareTriangle_readTriangle_returnSquare()
+        [Test]
+        public void Test2()
         {
-            Point a = new Point(0, 0);
-            Point b = new Point(10, 0);
-            Point c = new Point(0, 10);
-            Triangle triangle = new Triangle(a, b, c);
-            double expected = 50;
-            double actual = Math.Abs((((triangle.vertex2.X - triangle.vertex1.X) * (triangle.vertex3.Y - triangle.vertex1.Y)) -
-                             ((triangle.vertex3.X - triangle.vertex1.X) * (triangle.vertex2.Y - triangle.vertex1.Y))) / 2);
-            Assert.AreEqual(expected, actual);
+            //Arrange
+            Point p1, p2, p3;
+            p1 = new Point(1, 1);
+            p2 = new Point(2, 7);
+            p3 = new Point(7, 3);
+            Triangle tr1 = new Triangle(p1, p2, p3);
+
+            //Act
+            double s = Convert.ToInt32(tr1.Square());
+
+            //Assert
+            Assert.AreEqual(6, s);
+        }
+
+        [Test]
+        public void Test3()
+        {
+            //Arrange
+            Point p1, p2, p3;
+            p1 = new Point(1, 1);
+            p2 = new Point(2, 7);
+            p3 = new Point(7, 3);
+            Triangle tr1 = new Triangle(p1, p2, p3);
+
+            //Act
+            double d = Convert.ToInt32(tr1.Vertex1.Distance(tr1.Vertex2));
+
+            //Assert
+            Assert.AreEqual(8, d);
         }
     }
 }
